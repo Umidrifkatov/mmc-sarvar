@@ -1,0 +1,68 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtualenv
+venv/
+.env
+*.env
+env/
+
+# Django
+*.log
+local_settings.py
+/db.sqlite3
+/db.sqlite3-journal
+
+# Static and media files
+staticfiles/
+media/
+
+
+
+# IDEs и редакторы кода
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# MacOS
+.DS_Store
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+
+# pytest
+.cache/
+
+
+*__init__.py
+
+
+
+
+
+
+db.sqlite3
+# MyPy
+.mypy_cache/
+
+# Celery
+celerybeat-schedule
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Pipenv
+Pipfile.lock
+
+# Coverage
+.coverage
+htmlcov/
+.coverage.*

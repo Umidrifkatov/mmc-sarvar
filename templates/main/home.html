@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" style="background: linear-gradient(rgba(0, 63, 37, 0.9), rgba(8, 126, 65, 0.85)), url('{% static 'main/img/hero-bg.jpg' %}');">
+    <div class="container text-center">
+        <h1 class="display-4 mb-4">Производство полимерных композитов</h1>
+        <p class="lead mb-4 ">Ваш надежный партнер в мире пластиковых материалов</p>
+        <a href="{% url 'catalog' %}" class="btn btn-light btn-md">Смотреть каталог</a>
+
+    </div>
+</section>
+
+
+{% endblock %}

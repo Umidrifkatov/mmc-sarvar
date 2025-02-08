@@ -1,0 +1,331 @@
+:root {
+    --primary-green: #2ecc71;
+    --dark-green: #27ae60;
+    --light-green: #eafaf1;
+}
+
+body {
+    padding-top: 76px;
+    top: 0 !important;
+}
+
+/* Navbar */
+.navbar {
+    background: rgba(32, 136, 75, 0.692) !important;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    padding: 0.25rem 1rem;
+}
+
+.navbar.navbar-scrolled {
+    background: rgba(37, 135, 78, 0.677) !important;
+}
+
+.navbar .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .nav-link:hover {
+    color: #fff !important;
+}
+
+/* Hero section */
+.hero {
+    position: relative;
+    background-size: cover !important;
+    background-position: center !important;
+    color: white;
+    padding: 100px 0;
+    margin-top: -76px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-logo {
+    width: 300px;
+    height: auto;
+    margin-bottom: 2rem;
+    animation: fadeInDown 1s ease;
+}
+
+/* Cards */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.product-card img {
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Category filter */
+.category-filter {
+    border: none;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.list-group-item.active {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+/* Footer */
+.social-links a {
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-green) !important;
+}
+
+/* Breadcrumbs */
+.breadcrumb-item a {
+    color: var(--primary-green);
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: var(--dark-green);
+}
+
+/* Forms */
+.form-control:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 0.25rem rgba(46, 204, 113, 0.25);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-green);
+    border-color: var(--dark-green);
+}
+
+.text-primary {
+    color: var(--primary-green) !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo styling */
+.navbar-logo {
+    height: auto;
+    width: 180px;
+    transition: transform 0.3s ease;
+    object-fit: contain;
+    margin: 8px 0;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.05);
+}
+
+.footer-logo {
+    height: auto;
+    width: 240px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .navbar-logo {
+        width: 140px;
+    }
+    
+    .footer-logo {
+        width: 180px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-logo {
+        width: 120px;
+    }
+    
+    .footer-logo {
+        width: 160px;
+    }
+}
+
+/* Добавим favicon в head */
+
+/* Laboratory section styling */
+.service-list li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.service-list li i {
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+}
+
+.lab-image-container {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.lab-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(46, 204, 113, 0.3),
+        rgba(39, 174, 96, 0.2)
+    );
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+.lab-image-container img.lab-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.lab-image-container .overlay-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: auto;
+    opacity: 0.8;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.lab-image-container:hover img.lab-image {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .service-list li {
+        font-size: 1rem;
+    }
+    .lab-image-container .overlay-logo {
+        width: 150px;
+    }
+}
+
+/* Product list */
+.product-list li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.product-list li i {
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+}
+
+/* About image */
+.about-image-container {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.about-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(46, 204, 113, 0.3),
+        rgba(39, 174, 96, 0.2)
+    );
+    z-index: 1;
+}
+
+.about-image-container img {
+    transition: transform 0.3s ease;
+}
+
+.about-image-container:hover img {
+    transform: scale(1.02);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-logo {
+        width: 200px;
+    }
+    
+    .product-list li {
+        font-size: 1rem;
+    }
+}
+
+
+.service-list {
+    font-size: 12px; /* Уменьшает размер шрифта */
+    line-height: 1.4; /* Делает текст более компактным */
+    padding-left: 0; /* Убирает лишние отступы */
+}
+
+.service-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px; /* Уменьшает расстояние между элементами */
+}
+
+.service-list i {
+    font-size: 16px; /* Уменьшает размер иконки */
+}
+
+

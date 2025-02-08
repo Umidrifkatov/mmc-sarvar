@@ -1,0 +1,94 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <!-- Breadcrumbs -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'catalog' %}">Каталог</a></li>
+            <li class="breadcrumb-item active">{{ product.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Product Image -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="col-md-6">
+            <h1 class="mb-3">{{ product.name }}</h1>
+            <p class="text-muted mb-3">
+                <i class="bi bi-folder me-2"></i>
+                Категория: {{ product.category.name }}
+            </p>
+            
+            <div class="mb-4">
+                <h5>Описание</h5>
+                <p>{{ product.description|linebreaks }}</p>
+            </div>
+
+            <div class="mb-4">
+                <h5>Характеристики</h5>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-check2 text-primary me-2"></i>Материал: АБС пластик</li>
+                    <li><i class="bi bi-check2 text-primary me-2"></i>Производство: Россия</li>
+                    <li><i class="bi bi-check2 text-primary me-2"></i>Гарантия качества</li>
+                </ul>
+            </div>
+
+            <button class="btn btn-primary btn-lg mb-3" data-bs-toggle="modal" data-bs-target="#inquiryModal">
+                Запросить цену
+            </button>
+        </div>
+    </div>
+
+    <!-- Related Products -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="mb-4">Похожие товары</h3>
+        </div>
+        {% for related_product in product.category.products.all|slice:":3" %}
+        {% if related_product != product %}
+        <div class="col-md-4 mb-4">
+            <div class="card product-card h-100">
+                <img src="{{ related_product.image.url }}" class="card-img-top" alt="{{ related_product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ related_product.name }}</h5>
+                    <p class="card-text">{{ related_product.description|truncatewords:15 }}</p>
+                    <a href="{{ related_product.get_absolute_url }}" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Inquiry Modal -->
+<div class="modal fade" id="inquiryModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Запрос цены - {{ product.name }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ contact_form.as_p }}
+                    <button type="submit" class="btn btn-primary">Отправить запрос</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
