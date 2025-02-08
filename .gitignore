@@ -20,7 +20,7 @@ local_settings.py
 staticfiles/
 media/
 
-
+migrations/
 
 # IDEs и редакторы кода
 .vscode/
