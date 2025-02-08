@@ -16,7 +16,7 @@ services:
       - .:/app
       - static_volume:/app/staticfiles
       - ./sqlite_db:/app/sqlite_db
-      - media_volume:/var/www/media
+      - media_volume:/app/media
     expose:
       - "8000"
     environment:
